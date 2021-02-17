@@ -5,6 +5,7 @@ const doubleMoneyBtn = document.getElementById('double');
 const showMillionairesBtn = document.getElementById('show-millionaires');
 const sortBtn = document.getElementById('sort');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
+let mainContainer = document.getElementById('main');
 
 // Functions
 // ===================================================
@@ -18,7 +19,11 @@ async function addUser() {
     name: `${name.first} ${name.last}`,
     money,
   };
-  console.log(user);
+  //   console.log('user', user);
+  let userContainer = document.createElement('div');
+  userContainer.innerHTML = `<div class="user-container"><p>${user.name}</p><p>$${user.money}</p></div>`;
+  console.log(userContainer);
+  return mainContainer.appendChild(userContainer);
 }
 
 function doubleMoney() {}
@@ -36,3 +41,8 @@ doubleMoneyBtn.addEventListener('click', () => doubleMoney());
 showMillionairesBtn.addEventListener('click', () => showOnlyMillionaires());
 sortBtn.addEventListener('click', () => sortRichest());
 calculateWealthBtn.addEventListener('click', () => calculateTotalWealth());
+window.addEventListener('DOMContentLoaded', () => {
+  addUser();
+  addUser();
+  addUser();
+});

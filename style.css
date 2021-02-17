@@ -11,7 +11,10 @@ body {
   min-height: 100vh;
   margin: 0;
 }
-
+.user-container{
+    display: flex;
+    justify-content: space-between;
+}
 .container {
   display: flex;
   padding: 20px;
