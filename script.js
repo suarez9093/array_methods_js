@@ -12,7 +12,13 @@ async function addUser() {
   const url = 'https://randomuser.me/api';
   let response = await fetch(url);
   let data = await response.json();
-  console.log(data);
+  const { name } = data.results[0];
+  let money = Math.floor(Math.random() * 1000000);
+  let user = {
+    name: `${name.first} ${name.last}`,
+    money,
+  };
+  console.log(user);
 }
 
 function doubleMoney() {}
