@@ -8,7 +8,12 @@ const calculateWealthBtn = document.getElementById('calculate-wealth');
 
 // Functions
 // ===================================================
-function addUser() {}
+async function addUser() {
+  const url = 'https://randomuser.me/api';
+  let response = await fetch(url);
+  let data = await response.json();
+  console.log(data);
+}
 
 function doubleMoney() {}
 
@@ -17,8 +22,6 @@ function showOnlyMillionaires() {}
 function sortRichest() {}
 
 function calculateTotalWealth() {}
-
-const res = 'https://randomuser.me/api';
 
 // Event Listeners
 // ===================================================
