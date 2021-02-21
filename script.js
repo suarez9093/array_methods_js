@@ -5,9 +5,9 @@ const doubleMoneyBtn = document.getElementById('double');
 const showMillionairesBtn = document.getElementById('show-millionaires');
 const sortBtn = document.getElementById('sort');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
-let mainContainer = document.getElementById('main');
 
 const userName = document.querySelectorAll('.user-name');
+let mainContainer = document.getElementById('main');
 
 // Functions
 // ===================================================
@@ -28,21 +28,28 @@ async function addUser() {
   return mainContainer.appendChild(userContainer);
 }
 
+function stringMoneyValueToInt(string) {
+  return parseInt(string.innerText.split('$')[1]);
+}
+
 function doubleMoney() {
   const userMoney = document.querySelectorAll('.user-money');
-
   userMoney.forEach((user) => {
-    let doubleMoney = parseInt(user.innerText.split('$')[1]) * 2;
+    let doubleMoney = stringMoneyValueToInt(user) * 2;
     user.innerText = `$${doubleMoney}`;
     return user;
   });
 }
-//   for (let i = 0; i < userMoney.length; i++) {
-//     console.log('usermoney', parseInt(userMoney[i].innerText.split('$')[1]));
-//   }
-// }
 
-function showOnlyMillionaires() {}
+function showOnlyMillionaires(e) {
+  const userMoney = document.querySelectorAll('.user-money');
+  let userMoneyArray = [...userMoney];
+  userMoneyArray.map((user) => {
+    if (!(stringMoneyValueToInt(user) >= 1000000)) {
+      user.parentElement.style.display = 'none';
+    }
+  });
+}
 
 function sortRichest() {}
 
